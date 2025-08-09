@@ -3,8 +3,8 @@ package dev.luisghtz.platzi_play.persistence.mapper;
 import dev.luisghtz.platzi_play.domain.Genre;
 import org.mapstruct.Named;
 
-@Named("stringToGenre")
 public class GenreMapper {
+    @Named("stringToGenre")
     public static Genre stringToGenre(String genre) {
         if (genre == null || genre.isEmpty()) {
             return null;
