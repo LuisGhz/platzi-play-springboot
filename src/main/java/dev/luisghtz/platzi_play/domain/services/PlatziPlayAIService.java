@@ -1,4 +1,4 @@
-package dev.luisghtz.platzi_play;
+package dev.luisghtz.platzi_play.domain.services;
 
 import dev.langchain4j.service.UserMessage;
 import dev.langchain4j.service.spring.AiService;
