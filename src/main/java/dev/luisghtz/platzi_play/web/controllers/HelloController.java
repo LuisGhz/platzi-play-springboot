@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
-@RequestMapping
+@RequestMapping("/hello")
 @RequiredArgsConstructor
 public class HelloController {
   private final PlatziPlayAIService platziPlayAIService;
