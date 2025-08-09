@@ -1,7 +1,6 @@
 package dev.luisghtz.platzi_play.domain.services;
 
 import dev.luisghtz.platzi_play.domain.dto.MovieDto;
-import dev.luisghtz.platzi_play.domain.repository.MovieRepository;
 import dev.luisghtz.platzi_play.persistence.MovieEntityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
