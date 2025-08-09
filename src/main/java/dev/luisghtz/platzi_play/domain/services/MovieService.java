@@ -19,4 +19,8 @@ public class MovieService {
     public MovieDto getById(Long id) {
         return movieRepository.getById(id);
     }
+
+    public MovieDto create(MovieDto movieDto) {
+        return movieRepository.create(movieDto);
+    }
 }
