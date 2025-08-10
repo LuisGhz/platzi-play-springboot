@@ -1,6 +1,7 @@
 package dev.luisghtz.platzi_play.domain.services;
 
 import dev.luisghtz.platzi_play.domain.dto.MovieDto;
+import dev.luisghtz.platzi_play.domain.dto.UpdateMovieDto;
 import dev.luisghtz.platzi_play.persistence.MovieEntityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,5 +23,9 @@ public class MovieService {
 
     public MovieDto create(MovieDto movieDto) {
         return movieRepository.create(movieDto);
+    }
+
+    public MovieDto update(Long id, UpdateMovieDto movieDto) {
+        return movieRepository.update(id, movieDto);
     }
 }
