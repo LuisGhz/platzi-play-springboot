@@ -53,4 +53,9 @@ public class MovieEntityRepository implements MovieRepository {
                 crudMovieEntity.save(entity)
         );
     }
+
+    @Override
+    public void delete(Long id) {
+        crudMovieEntity.deleteById(id);
+    }
 }
