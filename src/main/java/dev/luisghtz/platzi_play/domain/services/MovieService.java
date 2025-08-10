@@ -28,4 +28,8 @@ public class MovieService {
     public MovieDto update(Long id, UpdateMovieDto movieDto) {
         return movieRepository.update(id, movieDto);
     }
+
+    public void delete(Long id) {
+        movieRepository.delete(id);
+    }
 }
