@@ -1,6 +1,7 @@
 package dev.luisghtz.platzi_play.web.controllers;
 
 import dev.luisghtz.platzi_play.domain.dto.MovieDto;
+import dev.luisghtz.platzi_play.domain.dto.UpdateMovieDto;
 import dev.luisghtz.platzi_play.domain.services.MovieService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -32,5 +33,13 @@ public class MovieController {
     public ResponseEntity<MovieDto> create(@RequestBody MovieDto movieDto) {
         var savedMovie = movieService.create(movieDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedMovie);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<MovieDto> update(@PathVariable Long id, @RequestBody UpdateMovieDto movieDto) {
+        var updatedMovie = movieService.update(id, movieDto);
+        return updatedMovie != null
+                ? ResponseEntity.ok(updatedMovie)
+                : ResponseEntity.notFound().build();
     }
 }
