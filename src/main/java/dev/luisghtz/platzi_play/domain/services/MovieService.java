@@ -1,5 +1,6 @@
 package dev.luisghtz.platzi_play.domain.services;
 
+import dev.langchain4j.agent.tool.Tool;
 import dev.luisghtz.platzi_play.domain.dto.MovieDto;
 import dev.luisghtz.platzi_play.domain.dto.UpdateMovieDto;
 import dev.luisghtz.platzi_play.persistence.MovieEntityRepository;
@@ -13,6 +14,7 @@ import java.util.List;
 public class MovieService {
     private final MovieEntityRepository movieRepository;
 
+    @Tool("Busca todas las películas dentro de platzi play")
     public List<MovieDto> getAll() {
         return movieRepository.getAll();
     }
