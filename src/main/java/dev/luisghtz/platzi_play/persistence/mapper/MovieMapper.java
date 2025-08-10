@@ -1,11 +1,9 @@
 package dev.luisghtz.platzi_play.persistence.mapper;
 
 import dev.luisghtz.platzi_play.domain.dto.MovieDto;
+import dev.luisghtz.platzi_play.domain.dto.UpdateMovieDto;
 import dev.luisghtz.platzi_play.persistence.entity.MovieEntity;
-import org.mapstruct.InheritInverseConfiguration;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
+import org.mapstruct.*;
 
 import java.util.List;
 
@@ -33,4 +31,9 @@ public interface MovieMapper {
             @Mapping(source = "genre", target = "genero", qualifiedByName = "genreToString"),
     })
     MovieEntity toEntity(MovieDto movieDto);
+
+    @Mapping(target = "titulo", source = "title")
+    @Mapping(target = "fechaEstreno", source = "releaseDate")
+    @Mapping(target = "clasificacion", source = "rating")
+    void updateEntityFromDto(UpdateMovieDto movieDto, @MappingTarget MovieEntity movieEntity);
 }
