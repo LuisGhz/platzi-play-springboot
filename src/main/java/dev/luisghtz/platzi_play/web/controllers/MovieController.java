@@ -1,8 +1,10 @@
 package dev.luisghtz.platzi_play.web.controllers;
 
 import dev.luisghtz.platzi_play.domain.dto.MovieDto;
+import dev.luisghtz.platzi_play.domain.dto.SuggestRequestDto;
 import dev.luisghtz.platzi_play.domain.dto.UpdateMovieDto;
 import dev.luisghtz.platzi_play.domain.services.MovieService;
+import dev.luisghtz.platzi_play.domain.services.PlatziPlayAIService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MovieController {
     private final MovieService movieService;
+    private final PlatziPlayAIService platziPlayAIService;
 
     @GetMapping
     public ResponseEntity<List<MovieDto>> getAll() {
@@ -33,6 +36,13 @@ public class MovieController {
     public ResponseEntity<MovieDto> create(@RequestBody MovieDto movieDto) {
         var savedMovie = movieService.create(movieDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedMovie);
+    }
+
+    @PostMapping("/suggestion")
+    public ResponseEntity<String> createSuggestions(@RequestBody SuggestRequestDto dto) {
+        return ResponseEntity.ok(
+                platziPlayAIService.generateMoviesSuggestions(dto.userPreference())
+        );
     }
 
     @PutMapping("/{id}")
