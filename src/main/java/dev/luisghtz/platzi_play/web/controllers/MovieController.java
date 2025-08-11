@@ -5,6 +5,7 @@ import dev.luisghtz.platzi_play.domain.dto.SuggestRequestDto;
 import dev.luisghtz.platzi_play.domain.dto.UpdateMovieDto;
 import dev.luisghtz.platzi_play.domain.services.MovieService;
 import dev.luisghtz.platzi_play.domain.services.PlatziPlayAIService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,7 +47,7 @@ public class MovieController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<MovieDto> update(@PathVariable Long id, @RequestBody UpdateMovieDto movieDto) {
+    public ResponseEntity<MovieDto> update(@PathVariable Long id, @Valid @RequestBody UpdateMovieDto movieDto) {
         var updatedMovie = movieService.update(id, movieDto);
         return updatedMovie != null
                 ? ResponseEntity.ok(updatedMovie)
