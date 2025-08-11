@@ -25,4 +25,10 @@ public class ResExceptionHandler {
         Error error = new Error("Validation Error", message);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Error> handleGenericException(Exception e) {
+        Error error = new Error("Internal Server Error", e.getMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
+    }
 }
